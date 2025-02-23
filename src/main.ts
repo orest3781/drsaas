@@ -7,11 +7,16 @@ import router from './router'
 import { useJobStore } from './stores/jobs'
 import { mockJobs } from './stores/mockData'
 
-// Create Pinia store
-const pinia = createPinia()
+// Create Vue application
+const app = createApp(App)
 
-// Create Vue I18n
+// Create and install Pinia
+const pinia = createPinia()
+app.use(pinia)
+
+// Create and install Vue I18n
 const i18n = createI18n({
+  legacy: false,
   locale: 'en',
   messages: {
     en: {
@@ -19,17 +24,14 @@ const i18n = createI18n({
     }
   }
 })
-
-// Create and mount the Vue application
-const app = createApp(App)
-
-// Use plugins
-app.use(pinia)
-app.use(router)
 app.use(i18n)
 
-// Initialize job store with mock data
+// Install router
+app.use(router)
+
+// Mount the app
+app.mount('#app')
+
+// Initialize job store with mock data (after mounting)
 const jobStore = useJobStore()
 jobStore.setJobs(mockJobs)
-
-app.mount('#app')

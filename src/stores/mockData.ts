@@ -31,15 +31,15 @@ export const mockJobs: Job[] = [
   },
   {
     id: 2,
-    clientName: 'TechStart Inc',
-    projectName: 'Legal Documents',
-    jobId: 'C0002P003B00012',
+    clientName: 'TechCorp',
+    projectName: 'Q1 Documentation',
+    jobId: 'C0002P001B00001',
     operator: 'Jane Smith',
     currentStep: 'SCAN',
     status: 'Urgent',
     steps: {
-      PREP: { progress: 100, operator: 'Emily Davis', lastUpdated: getTimestampWithinRange(2) },
-      SCAN: { progress: 45, operator: 'Jane Smith', lastUpdated: getTimestampWithinRange(0.2) },
+      PREP: { progress: 100, operator: 'Jane Smith', lastUpdated: getTimestampWithinRange(1) },
+      SCAN: { progress: 50, operator: 'Jane Smith', lastUpdated: getTimestampWithinRange(0.2) },
       QC: { progress: 0, operator: null, lastUpdated: null },
       INDEX: { progress: 0, operator: null, lastUpdated: null },
       REPREP: { progress: 0, operator: null, lastUpdated: null }
@@ -47,6 +47,23 @@ export const mockJobs: Job[] = [
   },
   {
     id: 3,
+    clientName: 'Healthcare Plus',
+    projectName: 'Patient Records',
+    jobId: 'C0003P001B00001',
+    operator: null,
+    currentStep: 'PREP',
+    status: 'On Hold',
+    holdReason: 'Waiting for client confirmation',
+    steps: {
+      PREP: { progress: 25, operator: 'Tom Wilson', lastUpdated: getTimestampWithinRange(4) },
+      SCAN: { progress: 0, operator: null, lastUpdated: null },
+      QC: { progress: 0, operator: null, lastUpdated: null },
+      INDEX: { progress: 0, operator: null, lastUpdated: null },
+      REPREP: { progress: 0, operator: null, lastUpdated: null }
+    }
+  },
+  {
+    id: 4,
     clientName: 'Global Finance',
     projectName: 'Transaction Records',
     jobId: 'C0003P002B00008',
@@ -58,22 +75,6 @@ export const mockJobs: Job[] = [
       SCAN: { progress: 100, operator: 'Lisa Anderson', lastUpdated: getTimestampWithinRange(2.2) },
       QC: { progress: 100, operator: 'John Doe', lastUpdated: getTimestampWithinRange(1.5) },
       INDEX: { progress: 90, operator: 'Mike Johnson', lastUpdated: getTimestampWithinRange(0.3) },
-      REPREP: { progress: 0, operator: null, lastUpdated: null }
-    }
-  },
-  {
-    id: 4,
-    clientName: 'Healthcare Plus',
-    projectName: 'Patient Records 2023',
-    jobId: 'C0004P001B00015',
-    operator: 'Sarah Wilson',
-    currentStep: 'PREP',
-    status: 'On Hold',
-    steps: {
-      PREP: { progress: 30, operator: 'Sarah Wilson', lastUpdated: getTimestampWithinRange(2.7) },
-      SCAN: { progress: 0, operator: null, lastUpdated: null },
-      QC: { progress: 0, operator: null, lastUpdated: null },
-      INDEX: { progress: 0, operator: null, lastUpdated: null },
       REPREP: { progress: 0, operator: null, lastUpdated: null }
     }
   },

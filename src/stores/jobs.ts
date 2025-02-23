@@ -8,6 +8,11 @@ export const useJobStore = defineStore('jobs', {
     recentlyCompleted: null as number | null
   }),
   
+  getters: {
+    activeJobs: (state) => state.jobs.filter(job => job.status !== 'Completed'),
+    completedJobs: (state) => state.jobs.filter(job => job.status === 'Completed')
+  },
+
   actions: {
     setJobs(jobs: Job[]) {
       this.jobs = jobs
@@ -28,17 +33,8 @@ export const useJobStore = defineStore('jobs', {
         // Reset after animation duration
         setTimeout(() => {
           this.recentlyCompleted = null
-        }, 2000)
+        }, 500)
       }
-    }
-  },
-
-  getters: {
-    completedJobs: (state) => {
-      return state.jobs.filter(job => job.status === 'Completed')
-    },
-    activeJobs: (state) => {
-      return state.jobs.filter(job => job.status !== 'Completed')
     }
   }
 }) 
